@@ -1,0 +1,12 @@
+#!/usr/bin/ruby
+
+args = {
+  '-a' => '--all',
+  '-b' => '--branches',
+  '-r' => '--remotes',
+}
+
+#ARGV.reject{ |arg| !args.has_key? arg }
+
+options = ARGV.map{ |arg| args[arg] }
+system "git-forest --sha --style=2 --topo-order #{options.join(' ')} | less -SR"
